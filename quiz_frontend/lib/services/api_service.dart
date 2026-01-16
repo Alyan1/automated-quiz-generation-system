@@ -4,12 +4,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/foundation.dart';
 
 class ApiService {
-  // Use http://10.0.2.2:8000 for Android emulator
-  // Use http://127.0.0.1:8000 for Windows/Web
-  // Use http://192.168.18.146:8000 for Physical Device
-  // static const String baseUrl = 'http://192.168.100.208:8000';
+
   static const String baseUrl =
-      'http://192.168.18.24:8000'; // for Batman Network
+      'http://192.222.18.77:8000'; // change the IP according to your connected WIFI IP
 
   static Future<String?> getToken() async {
     final prefs = await SharedPreferences.getInstance();
