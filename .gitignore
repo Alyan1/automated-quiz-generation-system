@@ -1,0 +1,14 @@
+# Ignore the large AI model (Download it separately on other machines)
+quiz_backend_rag/ml_model/*.gguf
+# Ignore System/IDE files
+.idea/
+.vscode/
+__pycache__/
+*.py[cod]
+.env
+.DS_Store
+# Ignore Flutter build files
+quiz_frontend/build/
+quiz_frontend/.dart_tool/
+quiz_frontend/.flutter-plugins
+quiz_frontend/.flutter-plugins-dependencies

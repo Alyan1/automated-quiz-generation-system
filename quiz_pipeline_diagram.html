@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Pipeline Diagram</title>
+    <!-- Load Mermaid -->
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    <style>
+        body { font-family: sans-serif; display: flex; flex-direction: column; align-items: center; padding: 20px; background-color: #f5f5f5; }
+        .mermaid { background-color: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        h1 { margin-bottom: 20px; }
+        p { color: #666; margin-bottom: 20px; }
+        .btn { padding: 10px 20px; background-color: #0277bd; color: white; text-decoration: none; border-radius: 5px; cursor: pointer; border: none; font-size: 16px; }
+        .btn:hover { background-color: #015f96; }
+    </style>
+</head>
+<body>
+    <h1>Data Pipeline Visualization</h1>
+    <p>Right-click the diagram below to "Save Image As..." or use a screenshot tool.</p>
+    
+    <div class="mermaid">
+graph TD
+    %% Global Styles
+    classDef storage fill:#f9f,stroke:#333,stroke-width:2px;
+    classDef process fill:#e1f5fe,stroke:#0277bd,stroke-width:2px;
+    classDef model fill:#fff9c4,stroke:#fbc02d,stroke-width:2px;
+    classDef input fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px;
+
+    subgraph Ingestion ["Phase 1: Knowledge Ingestion (Pre-processing)"]
+        direction TB
+        PDF[("PDF Documents")]:::input --> Extractor[("Text Extraction (pypdf)")]:::process
+        Extractor --> Cleaner[("Text Cleaning\n(Regex: Headers, URLs, Whitespace)")]:::process
+        Cleaner --> Chunker[("Smart Chunking\n(1000 chars window, 150 overlap)")]:::process
+        Chunker --> EmbedModel[("Embedding Model\n(all-MiniLM-L6-v2)")]:::model
+        EmbedModel --> Vectors[("Vector Embeddings")]:::process
+        Vectors --> VectorDB[("MySQL Database\n(LONGBLOB Storage)")]:::storage
+    end
+
+    subgraph Generation ["Phase 2: Quiz Generation Pipeline (Runtime)"]
+        direction TB
+        UserReq[("User Request\n(Topic, Difficulty, Quantity)")]:::input --> QueryEmbed[("Generate Query Embedding")]:::process
+        QueryEmbed --> Search[("Vector Search\n(Cosine Similarity)")]:::process
+        VectorDB -.-> Search
+        Search --> TopChunks[("Retrieve Top K Relevant Chunks")]:::process
+        
+        TopChunks --> Loop{{"Generation Loop\n(For each Question)"}}:::process
+        Loop --> Prompt[("Construct Prompt\n(System + Context + Instruction)")]:::process
+        Prompt --> Phi3[("LLM Inference\n(Phi-3 Mini 128k Instruct)")]:::model
+        Phi3 --> RawOutput[("Raw JSON Output")]:::process
+        
+        RawOutput --> Validation[("Validation & Parsing\n(Check Keys, Options, Format)")]:::process
+        Validation -- Invalid --> Loop
+        Validation -- Valid --> DB_Save[("Save to Database\n(Quiz & Questions Tables)")]:::storage
+    end
+
+    %% Connect the embedding model logic conceptually
+    EmbedModel -.-> QueryEmbed
+    </div>
+
+</body>
+</html>
