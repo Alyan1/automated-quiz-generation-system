@@ -3,9 +3,9 @@ from sqlalchemy.orm import sessionmaker, declarative_base
 import os
 
 DB_USER = os.getenv("DB_USER", "root")
-DB_PASS = os.getenv("DB_PASS", "alyan123")
+DB_PASS = os.getenv("DB_PASS", "alyan123") # ADD YOUR DATABASE PASSWORD, ROOT AND HOST NAME
 DB_HOST = os.getenv("DB_HOST", "localhost")
-DB_NAME = os.getenv("DB_NAME", "QuizGenerationAssessment")
+DB_NAME = os.getenv("DB_NAME", "QuizGenerationAssessment") 
 
 DATABASE_URL = f"mysql+pymysql://{DB_USER}:{DB_PASS}@{DB_HOST}/{DB_NAME}"
 
