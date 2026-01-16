@@ -2,7 +2,7 @@
 
 A full-stack intelligent assessment platform that leverages Generative AI (RAG + Phi-3) to automate quiz creation from lecture notes. Designed for educational institutions to streamline the workflow between Admins, Teachers, and Students.
 
-![Project Banner](replace_this_with_your_banner_link)
+![Project Banner](https://github.com/Alyan1/automated-quiz-generation-system/blob/13a3503a03a37ac0bc4761ce36a7f481750bca44/Quizine%20AI.png)
 
 ## 🚀 Key Features
 
@@ -93,3 +93,4 @@ The backend requires a local LLM model to function.
 
 ## 📄 License
 [MIT License](LICENSE)
+
