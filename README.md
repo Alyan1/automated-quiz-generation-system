@@ -1,4 +1,4 @@
-# Automated Quiz Generation & Assessment System
+# Automated Quiz Generation & Assessment AI System
 
 A full-stack intelligent assessment platform that leverages Generative AI (RAG + Phi-3) to automate quiz creation from lecture notes. Designed for educational institutions to streamline the workflow between Admins, Teachers, and Students.
 
@@ -93,3 +93,4 @@ The backend requires a local LLM model to function.
 
 ## 📄 License
 [MIT License](LICENSE)
+
