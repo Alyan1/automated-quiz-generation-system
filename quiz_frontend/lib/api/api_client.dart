@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 
 class ApiClient {
   static const String baseUrl =
-      "http://192.168.18.24"; // use your server IP when testing on device
+      "http://192.222.18.77"; // use your server IP when testing on device
 
   static Future<dynamic> get(String endpoint) async {
     final response = await http.get(Uri.parse("$baseUrl/$endpoint"));
