@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:quiz_frontend/screens/login.dart';
-import 'package:quiz_frontend/screens/splash_screen.dart'; // Import Splash Screen
+import 'package:quiz_frontend/screens/splash_screen.dart'; 
 import 'package:quiz_frontend/screens/admin_dashboard.dart';
 import 'package:quiz_frontend/screens/teacher/teacher_dashboard.dart';
 import 'package:quiz_frontend/screens/student/student_dashboard.dart';
