@@ -3,6 +3,8 @@
 A full-stack intelligent assessment platform that leverages Generative AI using Agentic RAG(RAG + Phi-3) to automate quiz creation from lecture notes. Designed for educational institutions to streamline the workflow between Admins, Teachers, and Students.
 
 ![Project Banner](https://github.com/Alyan1/automated-quiz-generation-system/blob/13a3503a03a37ac0bc4761ce36a7f481750bca44/Quizine%20AI.png)
+<img width="2816" height="1536" alt="quiz gen" src="https://github.com/user-attachments/assets/2497c07a-6724-40d0-9f7d-e701ef73a0a8" />
+
 
 ## 🚀 Key Features
 
